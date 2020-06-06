@@ -11,15 +11,13 @@ namespace Hardcodet.Wpf.TaskbarNotification.Interop
 
         static SystemInfo()
         {
-            using (var source = new HwndSource(new HwndSourceParameters()))
+            using var source = new HwndSource(new HwndSourceParameters());
+            if (source.CompositionTarget?.TransformToDevice != null)
             {
-                if (source.CompositionTarget?.TransformToDevice != null)
-                {
-                    DpiFactors = new System.Windows.Point(source.CompositionTarget.TransformToDevice.M11, source.CompositionTarget.TransformToDevice.M22);
-                    return;
-                }
-                DpiFactors = new System.Windows.Point(1, 1);
+                DpiFactors = new System.Windows.Point(source.CompositionTarget.TransformToDevice.M11, source.CompositionTarget.TransformToDevice.M22);
+                return;
             }
+            DpiFactors = new System.Windows.Point(1, 1);
         }
 
         /// <summary>

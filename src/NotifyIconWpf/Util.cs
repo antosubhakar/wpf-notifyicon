@@ -139,19 +139,29 @@ namespace Hardcodet.Wpf.TaskbarNotification
         /// </summary>
         public static BalloonFlags GetBalloonFlag(this BalloonIcon icon)
         {
-            switch (icon)
+            //switch (icon)
+            //{
+            //    case BalloonIcon.None:
+            //        return BalloonFlags.None;
+            //    case BalloonIcon.Info:
+            //        return BalloonFlags.Info;
+            //    case BalloonIcon.Warning:
+            //        return BalloonFlags.Warning;
+            //    case BalloonIcon.Error:
+            //        return BalloonFlags.Error;
+            //    default:
+            //        throw new ArgumentOutOfRangeException("icon");
+            //}
+
+            return icon switch
             {
-                case BalloonIcon.None:
-                    return BalloonFlags.None;
-                case BalloonIcon.Info:
-                    return BalloonFlags.Info;
-                case BalloonIcon.Warning:
-                    return BalloonFlags.Warning;
-                case BalloonIcon.Error:
-                    return BalloonFlags.Error;
-                default:
-                    throw new ArgumentOutOfRangeException("icon");
-            }
+                BalloonIcon.None => BalloonFlags.None,
+                BalloonIcon.Info => BalloonFlags.Info,
+                BalloonIcon.Warning => BalloonFlags.Warning,
+                BalloonIcon.Error => BalloonFlags.Error,
+                _ => throw new ArgumentOutOfRangeException("icon"),
+            };
+
         }
 
         #endregion
@@ -260,8 +270,9 @@ namespace Hardcodet.Wpf.TaskbarNotification
         {
             if (command == null) return;
 
-            RoutedCommand rc = command as RoutedCommand;
-            if (rc != null)
+            //RoutedCommand rc = command as RoutedCommand;
+            //if (rc != null)
+            if (command is RoutedCommand rc)
             {
                 //routed commands work on a target
                 if (rc.CanExecute(commandParameter, target)) rc.Execute(commandParameter, target);

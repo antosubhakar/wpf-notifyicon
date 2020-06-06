@@ -6,7 +6,7 @@ namespace Hardcodet.Wpf.TaskbarNotification.Interop
     /// <summary>
     /// Win32 API imports.
     /// </summary>
-    internal static class WinApi
+    public static class WinApi
     {
         private const string User32 = "user32.dll";
 
