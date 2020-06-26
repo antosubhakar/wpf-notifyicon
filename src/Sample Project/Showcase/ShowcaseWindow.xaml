@@ -13,7 +13,7 @@
     xmlns:local="clr-namespace:Samples"
     xmlns:Commands="clr-namespace:Samples.Commands"
     MinWidth="750"
-    MinHeight="800"
+    MinHeight="750"
     ResizeMode="NoResize">
     <Window.Resources>
 
